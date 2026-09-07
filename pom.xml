@@ -18,10 +18,20 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>vorbisspi</artifactId>
+            <version>1.0.3.3</version>
+    </dependency>
+    <dependency>
+        <groupId>com.googlecode.soundlibs</groupId>
+        <artifactId>jorbis</artifactId>
+        <version>0.0.17.4</version>
+    </dependency>
+    <dependency>
+        <groupId>com.googlecode.soundlibs</groupId>
+        <artifactId>tritonus-share</artifactId>
+        <version>0.3.7.4</version>
+    </dependency>
     </dependencies>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>26</maven.compiler.release>
-        <exec.mainClass>app.principal.AppCalcStudio</exec.mainClass>
-    </properties>
 </project>

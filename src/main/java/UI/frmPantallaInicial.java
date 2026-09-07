@@ -3,13 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
  * @author cahr913
  */
 public class frmPantallaInicial extends javax.swing.JFrame {
-    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmPantallaInicial.class.getName());
 
     /**
@@ -17,7 +18,55 @@ public class frmPantallaInicial extends javax.swing.JFrame {
      */
     public frmPantallaInicial() {
         initComponents();
+        
+        //musiquita de fondo :)
+        try {
+            java.io.InputStream in = getClass().getResourceAsStream("/archive/intro.ogg");
+            javax.sound.sampled.AudioInputStream audioEntrada = javax.sound.sampled.AudioSystem.getAudioInputStream(new java.io.BufferedInputStream(in));
+    
+            // Formato original (Vorbis) -> convertir a PCM
+            javax.sound.sampled.AudioFormat formatoBase = audioEntrada.getFormat();
+            javax.sound.sampled.AudioFormat formatoPCM = new javax.sound.sampled.AudioFormat(
+                javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED,
+                formatoBase.getSampleRate(),
+                16,
+                formatoBase.getChannels(),
+                formatoBase.getChannels() * 2,
+                formatoBase.getSampleRate(),
+                false
+            );
+    
+            javax.sound.sampled.AudioInputStream audioPCM = javax.sound.sampled.AudioSystem.getAudioInputStream(formatoPCM, audioEntrada);
+    
+            javax.sound.sampled.Clip clip = javax.sound.sampled.AudioSystem.getClip();
+            clip.open(audioPCM);
+            clip.loop(javax.sound.sampled.Clip.LOOP_CONTINUOUSLY);
+        } catch (Exception e) {
+            e.printStackTrace();
+}
+        // imagen abajo opciones
+        ImageIcon icono1 = new ImageIcon(getClass().getResource("/archive/VOICESINMYHEADVOICESINMYHEADVOICESINMYHEADVOICESINMYHEADVOICESINMYHEAD.jpg"));
+        Image img1 = icono1.getImage().getScaledInstance(
+                lblImagenGato.getWidth(), 
+                lblImagenGato.getHeight(), 
+                Image.SCALE_SMOOTH); // pon el ancho/alto que quieras
+        lblImagenGato.setIcon(new ImageIcon(img1));
+        
+        // imagen MyWork.png
+        ImageIcon Mywork = new ImageIcon(getClass().getResource("/archive/mywork.png"));
+        Image img2 = Mywork.getImage().getScaledInstance(
+                lblImagenMywork.getWidth(), 
+                lblImagenMywork.getHeight(), 
+                Image.SCALE_SMOOTH); // pon el ancho/alto que quieras
+        lblImagenMywork.setIcon(new ImageIcon(img2));
+        
+        
+        
+        
+
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,76 +77,118 @@ public class frmPantallaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        pnlAbsolutoPrograma = new UI.PanelBackground("/archive/catacomb.png");
+        pnlCalcStudio = new UI.PanelBackground("/archive/Stone6.png");
         lblNombreApp = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        btnRectangulo = new javax.swing.JButton();
+        lblImagenMywork = new javax.swing.JLabel();
+        javax.swing.JPanel pnlOpciones = new UI.PanelBackground("/archive/fondoMenu.png");
+        btnRectangulo = new UI.BotonBackground("/archive/fondoBotones.png");
+        btnCuadrado = new UI.BotonBackground("/archive/fondoBotones.png");
+        btnTriangulo = new UI.BotonBackground("/archive/fondoBotones.png");
+        lblImagenGato = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(222, 235, 166));
+        pnlAbsolutoPrograma.setBackground(new java.awt.Color(222, 235, 166));
+        pnlAbsolutoPrograma.setForeground(new java.awt.Color(153, 153, 153));
 
-        jPanel2.setBackground(new java.awt.Color(95, 166, 213));
-        jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
+        pnlCalcStudio.setBackground(new java.awt.Color(95, 166, 213));
+        pnlCalcStudio.setBorder(new javax.swing.border.MatteBorder(null));
 
         lblNombreApp.setBackground(new java.awt.Color(0, 0, 0));
         lblNombreApp.setFont(new java.awt.Font("Noto Sans Black", 3, 36)); // NOI18N
-        lblNombreApp.setForeground(new java.awt.Color(0, 0, 0));
         lblNombreApp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreApp.setText("CalcStudio");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlCalcStudioLayout = new javax.swing.GroupLayout(pnlCalcStudio);
+        pnlCalcStudio.setLayout(pnlCalcStudioLayout);
+        pnlCalcStudioLayout.setHorizontalGroup(
+            pnlCalcStudioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCalcStudioLayout.createSequentialGroup()
                 .addGap(313, 313, 313)
-                .addComponent(lblNombreApp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(307, 307, 307))
+                .addComponent(lblNombreApp, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(lblImagenMywork, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(186, 186, 186))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlCalcStudioLayout.setVerticalGroup(
+            pnlCalcStudioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblNombreApp, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+            .addComponent(lblImagenMywork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pnlOpciones.setBackground(new java.awt.Color(0, 0, 255));
+        pnlOpciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnRectangulo.setBackground(new java.awt.Color(255, 0, 255));
         btnRectangulo.setFont(new java.awt.Font("Noto Serif Display Black", 2, 18)); // NOI18N
         btnRectangulo.setForeground(new java.awt.Color(255, 255, 255));
         btnRectangulo.setText("Rectangulo");
+        btnRectangulo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRectangulo.addActionListener(this::btnRectanguloActionPerformed);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRectangulo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+        btnCuadrado.setBackground(new java.awt.Color(255, 0, 255));
+        btnCuadrado.setFont(new java.awt.Font("Noto Serif Display Black", 2, 18)); // NOI18N
+        btnCuadrado.setForeground(new java.awt.Color(255, 255, 255));
+        btnCuadrado.setText("Cuadrado");
+        btnCuadrado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCuadrado.addActionListener(this::btnCuadradoActionPerformed);
+
+        btnTriangulo.setBackground(new java.awt.Color(255, 0, 255));
+        btnTriangulo.setFont(new java.awt.Font("Noto Serif Display Black", 2, 18)); // NOI18N
+        btnTriangulo.setForeground(new java.awt.Color(255, 255, 255));
+        btnTriangulo.setText("Triangulo");
+        btnTriangulo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTriangulo.addActionListener(this::btnTrianguloActionPerformed);
+
+        javax.swing.GroupLayout pnlOpcionesLayout = new javax.swing.GroupLayout(pnlOpciones);
+        pnlOpciones.setLayout(pnlOpcionesLayout);
+        pnlOpcionesLayout.setHorizontalGroup(
+            pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOpcionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRectangulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCuadrado, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                    .addComponent(btnTriangulo, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        pnlOpcionesLayout.setVerticalGroup(
+            pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOpcionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnRectangulo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(508, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTriangulo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(722, 890, Short.MAX_VALUE))
+        lblImagenGato.setBackground(new java.awt.Color(255, 102, 255));
+        lblImagenGato.setForeground(new java.awt.Color(102, 51, 0));
+
+        javax.swing.GroupLayout pnlAbsolutoProgramaLayout = new javax.swing.GroupLayout(pnlAbsolutoPrograma);
+        pnlAbsolutoPrograma.setLayout(pnlAbsolutoProgramaLayout);
+        pnlAbsolutoProgramaLayout.setHorizontalGroup(
+            pnlAbsolutoProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlCalcStudio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlAbsolutoProgramaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlAbsolutoProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblImagenGato, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnlAbsolutoProgramaLayout.setVerticalGroup(
+            pnlAbsolutoProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAbsolutoProgramaLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(pnlCalcStudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblImagenGato, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -105,17 +196,27 @@ public class frmPantallaInicial extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(pnlAbsolutoPrograma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlAbsolutoPrograma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRectanguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRectanguloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRectanguloActionPerformed
+
+    private void btnCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuadradoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCuadradoActionPerformed
+
+    private void btnTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrianguloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTrianguloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,12 +242,17 @@ public class frmPantallaInicial extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new frmPantallaInicial().setVisible(true));
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCuadrado;
     private javax.swing.JButton btnRectangulo;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton btnTriangulo;
+    private javax.swing.JLabel lblImagenGato;
+    private javax.swing.JLabel lblImagenMywork;
     private javax.swing.JLabel lblNombreApp;
+    private javax.swing.JPanel pnlAbsolutoPrograma;
+    private javax.swing.JPanel pnlCalcStudio;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,6 +3,7 @@
  */
 
 package app.principal;
+import UI.*;
 
 /**
  *
@@ -11,6 +12,9 @@ package app.principal;
 public class AppCalcStudio {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        java.awt.EventQueue.invokeLater(() -> {
+            new frmPantallaInicial().setVisible(true);
+        
+    });
     }
 }
