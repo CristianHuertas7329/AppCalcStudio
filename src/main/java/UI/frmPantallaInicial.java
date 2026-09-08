@@ -23,6 +23,7 @@ public class frmPantallaInicial extends javax.swing.JFrame {
         try {
             java.io.InputStream in = getClass().getResourceAsStream("/archive/intro.ogg");
             javax.sound.sampled.AudioInputStream audioEntrada = javax.sound.sampled.AudioSystem.getAudioInputStream(new java.io.BufferedInputStream(in));
+            pnlSubmenus.setVisible(false);
     
             // Formato original (Vorbis) -> convertir a PCM
             javax.sound.sampled.AudioFormat formatoBase = audioEntrada.getFormat();
@@ -85,7 +86,9 @@ public class frmPantallaInicial extends javax.swing.JFrame {
         btnRectangulo = new UI.BotonBackground("/archive/fondoBotones.png");
         btnCuadrado = new UI.BotonBackground("/archive/fondoBotones.png");
         btnTriangulo = new UI.BotonBackground("/archive/fondoBotones.png");
+        btnTrapecio = new UI.BotonBackground("/archive/fondoBotones.png");
         lblImagenGato = new javax.swing.JLabel();
+        pnlSubmenus = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,6 +144,13 @@ public class frmPantallaInicial extends javax.swing.JFrame {
         btnTriangulo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTriangulo.addActionListener(this::btnTrianguloActionPerformed);
 
+        btnTrapecio.setBackground(new java.awt.Color(255, 0, 255));
+        btnTrapecio.setFont(new java.awt.Font("Noto Serif Display Black", 2, 18)); // NOI18N
+        btnTrapecio.setForeground(new java.awt.Color(255, 255, 255));
+        btnTrapecio.setText("Trapecio");
+        btnTrapecio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTrapecio.addActionListener(this::btnTrapecioActionPerformed);
+
         javax.swing.GroupLayout pnlOpcionesLayout = new javax.swing.GroupLayout(pnlOpciones);
         pnlOpciones.setLayout(pnlOpcionesLayout);
         pnlOpcionesLayout.setHorizontalGroup(
@@ -150,7 +160,8 @@ public class frmPantallaInicial extends javax.swing.JFrame {
                 .addGroup(pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRectangulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCuadrado, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                    .addComponent(btnTriangulo, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+                    .addComponent(btnTriangulo, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                    .addComponent(btnTrapecio, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlOpcionesLayout.setVerticalGroup(
@@ -162,11 +173,15 @@ public class frmPantallaInicial extends javax.swing.JFrame {
                 .addComponent(btnCuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnTriangulo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTrapecio, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblImagenGato.setBackground(new java.awt.Color(255, 102, 255));
         lblImagenGato.setForeground(new java.awt.Color(102, 51, 0));
+
+        pnlSubmenus.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout pnlAbsolutoProgramaLayout = new javax.swing.GroupLayout(pnlAbsolutoPrograma);
         pnlAbsolutoPrograma.setLayout(pnlAbsolutoProgramaLayout);
@@ -175,10 +190,12 @@ public class frmPantallaInicial extends javax.swing.JFrame {
             .addComponent(pnlCalcStudio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlAbsolutoProgramaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlAbsolutoProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblImagenGato, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlAbsolutoProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblImagenGato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(pnlSubmenus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
         pnlAbsolutoProgramaLayout.setVerticalGroup(
             pnlAbsolutoProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,10 +203,13 @@ public class frmPantallaInicial extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(pnlCalcStudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblImagenGato, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(pnlAbsolutoProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlAbsolutoProgramaLayout.createSequentialGroup()
+                        .addComponent(pnlOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblImagenGato, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                    .addComponent(pnlSubmenus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,6 +228,14 @@ public class frmPantallaInicial extends javax.swing.JFrame {
 
     private void btnRectanguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRectanguloActionPerformed
         // TODO add your handling code here:
+        pnlSubmenus.setVisible(true);
+        pnlSubmenus.removeAll();
+        pnlSubmenus.add(new UI.pnlRectangulo());
+        pnlSubmenus.revalidate();
+        pnlSubmenus.repaint();
+        
+        
+        
     }//GEN-LAST:event_btnRectanguloActionPerformed
 
     private void btnCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuadradoActionPerformed
@@ -217,6 +245,10 @@ public class frmPantallaInicial extends javax.swing.JFrame {
     private void btnTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrianguloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTrianguloActionPerformed
+
+    private void btnTrapecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrapecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTrapecioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,11 +280,13 @@ public class frmPantallaInicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCuadrado;
     private javax.swing.JButton btnRectangulo;
+    private javax.swing.JButton btnTrapecio;
     private javax.swing.JButton btnTriangulo;
     private javax.swing.JLabel lblImagenGato;
     private javax.swing.JLabel lblImagenMywork;
     private javax.swing.JLabel lblNombreApp;
     private javax.swing.JPanel pnlAbsolutoPrograma;
     private javax.swing.JPanel pnlCalcStudio;
+    private javax.swing.JPanel pnlSubmenus;
     // End of variables declaration//GEN-END:variables
 }

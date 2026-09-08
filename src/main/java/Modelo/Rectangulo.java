@@ -34,7 +34,7 @@ public class Rectangulo extends Poligono {
     
     @Override
     public double perimetro(){
-        return (lado1 + lado2);        
+        return (2*(lado1 + lado2));        
     }
     
     
