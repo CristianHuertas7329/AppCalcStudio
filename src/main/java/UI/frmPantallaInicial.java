@@ -240,10 +240,23 @@ public class frmPantallaInicial extends javax.swing.JFrame {
 
     private void btnCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuadradoActionPerformed
         // TODO add your handling code here:
+        pnlSubmenus.setVisible(true);
+        pnlSubmenus.removeAll();
+        pnlSubmenus.add(new UI.pnlCuadrado());
+        pnlSubmenus.revalidate();
+        pnlSubmenus.repaint();
+        
     }//GEN-LAST:event_btnCuadradoActionPerformed
 
     private void btnTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrianguloActionPerformed
         // TODO add your handling code here:
+        pnlSubmenus.setVisible(true);
+        pnlSubmenus.removeAll();
+        pnlSubmenus.add(new UI.pnlTriangulo());
+        pnlSubmenus.revalidate();
+        pnlSubmenus.repaint();
+        
+        
     }//GEN-LAST:event_btnTrianguloActionPerformed
 
     private void btnTrapecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrapecioActionPerformed

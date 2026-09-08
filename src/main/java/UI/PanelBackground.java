@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelBackground extends JPanel {
+    //Atributo
     private Image imagenFondo;
 
+    // Constructor
     public PanelBackground(String rutaImagen) {
         try {
             imagenFondo = new ImageIcon(getClass().getResource(rutaImagen)).getImage();
@@ -14,6 +16,7 @@ public class PanelBackground extends JPanel {
         }
     }
 
+    // metodo abstracto de Jcomponent
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
