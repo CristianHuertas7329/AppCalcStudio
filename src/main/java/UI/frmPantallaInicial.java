@@ -261,6 +261,11 @@ public class frmPantallaInicial extends javax.swing.JFrame {
 
     private void btnTrapecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrapecioActionPerformed
         // TODO add your handling code here:
+        pnlSubmenus.setVisible(true);
+        pnlSubmenus.removeAll();
+        pnlSubmenus.add(new UI.pnlTrapecio());
+        pnlSubmenus.revalidate();
+        pnlSubmenus.repaint();
     }//GEN-LAST:event_btnTrapecioActionPerformed
 
     /**
